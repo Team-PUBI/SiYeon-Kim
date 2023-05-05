@@ -22,6 +22,8 @@ public class MemoryMemberRepository implements MemberRepository{
 
     @Override
     public Optional<Member> findByName(String name) {
+        // Stream API는 Java에서 컬렉션, 배열 등의 데이터를 처리하기 위한 새로운 방식을 제공.
+        // Collection이나 배열등의 인자들을 하나씩 처리하는 것이 아닌 filter를 이용해서 바로 값을 추출하기 위한 전단계.
         return store.values ().stream ()
                 .filter ( member -> member.getName ().equals ( name ) )
                 .findAny ();
