@@ -8,9 +8,15 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository ();
+    private final MemberRepository memberRepository;
 
-//     회원 가입
+    // Test 코드 작성할 때 서로 다른 객체를 이용하는 문제를 해결하기 위함.
+    // DI (Dependency Injection - 의존성 주입)
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
+    //     회원 가입
     public Long join(Member member) {
 //         같은 이름이 있는 중복회원 X
 //         Optional<Member> result = memberRepository.findByName ( member.getName () );
