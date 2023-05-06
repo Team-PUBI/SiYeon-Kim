@@ -3,15 +3,18 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class MemberService {
     private final MemberRepository memberRepository;
 
     // Test 코드 작성할 때 서로 다른 객체를 이용하는 문제를 해결하기 위함.
     // DI (Dependency Injection - 의존성 주입)
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
