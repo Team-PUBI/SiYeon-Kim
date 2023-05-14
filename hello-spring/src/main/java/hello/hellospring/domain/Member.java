@@ -1,8 +1,15 @@
 package hello.hellospring.domain;
 
+import jakarta.persistence.*;
+
+
+@Entity
 public class Member {
+
     // 고객이 정하는 id가 아닌 시스템이 정하는 id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) // DB가 알아서 생성해줌.
     private Long id;
+    @Column(name = "username")
     private String name;
 
     public Long getId() {
