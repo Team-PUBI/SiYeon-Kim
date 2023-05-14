@@ -31,10 +31,22 @@ public class MemberService {
 //            throw new IllegalStateException ( "이미 존재하는 회원입니다." );
 //        } );
 
-        validateDuplicateMember( member ); // 중복회원 검증
+        long start = System.currentTimeMillis ();
 
-        memberRepository.save ( member );
-        return member.getId ();
+        try {
+            validateDuplicateMember( member ); // 중복회원 검증
+
+            memberRepository.save ( member );
+            return member.getId ();
+        } finally {
+            long finish = System.currentTimeMillis ();
+            long timeMs = finish - start;
+
+            System.out.println ( "join : " + timeMs + "ms" );
+
+        }
+
+
     }
 
     private void validateDuplicateMember(Member member) {
